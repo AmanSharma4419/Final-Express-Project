@@ -13,7 +13,6 @@ mongoose.connect("mongodb://localhost/Users",{useNewUrlParser:true},(err) => {
   err ? console.log("Error While Connecting To Database") : console.log("SusessFully Connected To MongoDB")
 });
 
-
 var app = express();
 
 // view engine setup
