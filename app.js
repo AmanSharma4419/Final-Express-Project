@@ -9,7 +9,7 @@ var registerForm = require('./routes/index');
 //var usersRouter = require('./routes/users');
 
 //Connecting to the mongo database
-mongoose.connect("mongodb://localhost/Users",{useNewUrlParser:true},(err) => {
+mongoose.connect("mongodb://localhost/user_auth", {useNewUrlParser:true} ,(err) => {
   err ? console.log("Error While Connecting To Database") : console.log("SusessFully Connected To MongoDB")
 });
 
@@ -25,8 +25,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/register', registerForm);
-//app.use('/', usersRouter);
+app.use('/', registerForm);
+//app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
