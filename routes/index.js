@@ -12,20 +12,20 @@ router.get("/register",(req,res) => {
 })
 
 //saving data into db
-router.post("/register", (req, res, next) => {
+router.post("/submit", (req, res, next) => {
   User.create(req.body,(err,userRegistred) => {
     if(err) return next(err);
-    res.render("login")
+    res.render("login");
   })
 })
 //handling the data while user login
-router.post("/login",(req,res,next) => {
-var pass = req.body.password;
+router.post("/verify",(req, res, next) => {
+var pass = req.body.Password;
 User.findOne({email:req.body.email},(err,user) => {
   if(err) return next(err);
-  if(!user) res.json({user:UsernotPresented});
-  if(!user.confirmPassword(pass)) res.json({pasword:IncorrectPasword});
-  res.send("you are login sucessfully");
+  if(!user) res.json({user:"UsernotPresented"});
+  if(!user.confirmPassword(pass)) res.json({pasword:"IncorrectPasword"});
+  res.json({message:"you are login sucessfully"});
 })
 })
 

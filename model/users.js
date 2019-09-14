@@ -23,7 +23,7 @@ var userSchema = new schema ({
 //hashing the password before saving into db
 userSchema.pre("save", function(next) {
     if(this.password) {
-        this.password = bcrypt.hashSync(this.password,10);
+        this.password = bcrypt.hashSync(this.password, 10);
         next();
     }
 });
