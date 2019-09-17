@@ -1,4 +1,4 @@
-//All Requries in Server.js
+//All Requries
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');

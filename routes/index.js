@@ -18,6 +18,7 @@ router.post("/submit", (req, res, next) => {
     res.render("login");
   })
 })
+
 //handling the data while user login
 router.post("/verify",(req, res, next) => {
 var pass = req.body.Password;
