@@ -12,7 +12,7 @@ var registerForm = require('./routes/index');
 mongoose.connect("mongodb://localhost/user_auth", {useNewUrlParser:true} ,(err) => {
   err ? console.log("Error While Connecting To Database") : console.log("SusessFully Connected To MongoDB")
 });
-
+//Mounting the express app
 var app = express();
 
 // view engine setup
@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+// Providing the path to the routes
 app.use('/', registerForm);
 //app.use('/users', usersRouter);
 
@@ -43,5 +43,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
+// Exportig the app
 module.exports = app;
