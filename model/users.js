@@ -1,13 +1,13 @@
-//requring the mongoose 
+//Requring the mongoose 
 var mongoose = require("mongoose");
 
-//extracting the schema from mongoose
+//Extracting the schema from mongoose
 var schema = mongoose.Schema;
 
-//requring the bcrypt package
+//Requring the bcrypt package
 var bcrypt = require("bcrypt");
 
-//making the schema for the users
+//Making the schema for the users
 var userSchema = new schema ({
     name : String,
     email: {
@@ -20,20 +20,20 @@ var userSchema = new schema ({
         required : true,
     }
 },{timestamps : true})
-//hashing the password before saving into db
+//Hashing the password before saving into db
 userSchema.pre("save", function(next) {
     if(this.password) {
         this.password = bcrypt.hashSync(this.password, 10);
         next();
     }
 });
-//comparing the plane password with hash password at login time
+//Comparing the plane password with hash password at login time from datatbase
 userSchema.methods.confirmPassword = function(password) {
      return bcrypt.compareSync(password,this.password);
 }
 
-//making the model of userSchema
+//Making the model of userSchema
 var User = mongoose.model("User",userSchema);
 
-//exporting the model userSchema
+//Exporting the model userSchema
 module.exports = User;
